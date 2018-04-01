@@ -37,20 +37,7 @@ int main(int argc, char* args[])
 			if (event.type == SDL_QUIT) {
 				exit(0);
 			} else if (event.type == SDL_MOUSEMOTION) {
-				//player.camera->ProcessMouseMovement((float)event.motion.xrel, (float)event.motion.yrel);
 				player.MouseMotion((float)event.motion.xrel, (float)event.motion.yrel);
-			} else if (event.type == SDL_MOUSEWHEEL) {
-				if (event.wheel.y > 0) {
-					//player.getCamera()->ProcessMouseScroll((float)event.wheel.y);
-				} else if (event.wheel.y < 0) {
-					//player.getCamera()->ProcessMouseScroll((float)event.wheel.y);
-				}
-			} else if (event.type == SDL_KEYDOWN) {
-				switch (event.key.keysym.sym) {
-					case SDLK_ESCAPE: exit(0); break;
-					case SDLK_UP:   SDL_SetWindowSize(window, 1920, 1080); 	glViewport(0, 0, 1920, 1080); break;
-					case SDLK_DOWN: SDL_SetWindowSize(window, 1280, 720); 	glViewport(0, 0, 1280, 720); break;
-				}
 			}
 		}
 

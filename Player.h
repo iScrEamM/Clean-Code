@@ -3,19 +3,6 @@
 #include "Model.h"
 #include "Camera.h"
 
-class EAngle {
-public:
-	EAngle();
-	EAngle(float pitch, float yaw);
-	
-	glm::vec3 ToVector();
-
-	void Normalize();
-
-	float p;
-	float y;
-};
-
 class Player
 {
 public:
@@ -32,8 +19,6 @@ public:
 	Model* model;
 	Camera* camera;
 	Shader shader;
-
-	EAngle angView;
 
 	glm::vec3 position;
 	glm::vec3 velocity;

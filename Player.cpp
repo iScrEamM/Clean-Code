@@ -1,30 +1,5 @@
 #include "Player.h"
 
-EAngle::EAngle() { p = 0.0f; y = 0.0f; }
-
-EAngle::EAngle(float pitch, float yaw) { p = pitch; y = yaw; }
-
-glm::vec3 EAngle::ToVector()
-{
-	glm::vec3 result;
-	float y2 = y / 360 * 2 * (float)M_PI;
-	float p2 = p / 360 * 2 * (float)M_PI;
-
-	result.x = cos(y2)*cos(p2);
-	result.y = sin(p2);
-	result.z = sin(y2)*cos(p2);
-
-	return result;
-}
-
-void EAngle::Normalize() {
-	if (p > 89)      p = 89;
-	if (p < -89)     p = -89;
-
-	while (y < -180) y += 360;
-	while (y > 180)  y -= 360;
-}
-
 Player::Player(glm::vec3 position)
 {
 	this->position = position;
@@ -96,13 +71,6 @@ void Player::Update(float deltaTime)
 
 void Player::MouseMotion(float x, float y)
 {
-	float flSensitivity = 0.3f;
-
-	angView.p += x * flSensitivity;
-	angView.y += y * flSensitivity;
-
-	angView.Normalize();
-
 	camera->ProcessMouseMovement(x, y, 0.1f, true);
 }
 
